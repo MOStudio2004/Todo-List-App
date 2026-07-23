@@ -187,15 +187,19 @@ text-decoration: underline;
 }
 
 #controls{
-    background-color: var(--card-color);
-    margin: 20px auto 0;
-    width: 700px;
-    max-width: 90%;
-    padding: 20px 30px;
-    border-radius: 10px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+}
+
+.status{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.status p{
+    margin: 0;
 }
 
 #task-count{
@@ -279,4 +283,21 @@ background-color: crimson;
 border: none;
 color: var(--text-color);
 border-radius: 20px;
+}
+@media (max-width: 600px){
+
+    #controls{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .status{
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #delete-complete-btn{
+        width: 100%;
+    }
+
 }
