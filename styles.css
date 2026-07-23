@@ -43,7 +43,6 @@ body{
 }
 
 #theme-btn:hover{
-    background-color: #030b2b;
     transform: scale(1.05);
     cursor: pointer;
 }
