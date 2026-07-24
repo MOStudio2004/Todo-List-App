@@ -129,6 +129,7 @@ background-color: var(--body-color);
 border: none;
 color: var(--text-color);
 transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+border-radius: 10px;
 }
 
 .filter-btn.active{
