@@ -108,6 +108,7 @@ body{
 
 #add-task-btn:hover{
     background-color: #030b2b;
+    color: white;
     transform: scale(1.05);
     cursor: pointer;
 }
@@ -136,7 +137,7 @@ text-decoration: underline;
 
 .filter-btn:hover{
     text-decoration: underline;
-    background-color: #030b2b;
+    background-color: crimson;
     transform: scale(1.05);
     cursor: pointer;
     border-radius: 10px;

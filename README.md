@@ -29,7 +29,7 @@ This project helps users organize their daily tasks with a clean interface and p
 
 ## 📸 Preview
 
-![Todo List Preview](assets/screenshot.png)
+![Todo List Preview](assets/screenshot.png.png)
 
 ## 🎯 What I Learned
 
