@@ -91,6 +91,9 @@ if (task.trim().length === 0 ){
         saveTasks();
     })
     checkBox.addEventListener("change" , () => {
+           if (checkBox.checked){
+        ul.appendChild(li)
+        }
      updateCounters();
      saveTasks();
     })
@@ -122,9 +125,6 @@ tasksArray.push(taskData);
 }
 
 addBtn.addEventListener("click" , () => {
-    if (checkBox.checked){
-        ul.appendChild(li)
-        }
     addTask(inputTask.value , false);
     saveTasks();
 })
