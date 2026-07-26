@@ -96,6 +96,9 @@ if (task.trim().length === 0 ){
         checkSound.currentTime = 0;
         checkSound.play();
     }
+    if (checkBox.checked){
+        ul.appendChild(li);
+    }
      updateCounters();
      saveTasks();
     })
