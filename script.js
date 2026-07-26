@@ -122,6 +122,9 @@ tasksArray.push(taskData);
 }
 
 addBtn.addEventListener("click" , () => {
+    if (checkBox.checked){
+        ul.appendChild(li)
+        }
     addTask(inputTask.value , false);
     saveTasks();
 })
