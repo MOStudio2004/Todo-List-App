@@ -91,6 +91,11 @@ if (task.trim().length === 0 ){
         saveTasks();
     })
     checkBox.addEventListener("change" , () => {
+    const checkSound = newAudio("./check.mp3");
+    if (checkBox.checked){
+        checkSound.currentTime = 0;
+        checkSound.play();
+    }
      updateCounters();
      saveTasks();
     })
