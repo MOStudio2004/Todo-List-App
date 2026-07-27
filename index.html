@@ -31,9 +31,6 @@
     <button id="Completed" class="filter-btn">Completed</button>
 </nav>
 <ul id="task-list">
-
-</ul>
-</div>
 <div id="controls">
     <div class="status">
     <p>
@@ -49,6 +46,50 @@
     </div>
     <button type="button" id="delete-complete-btn"><i class="fa-solid fa-trash"></i>Clear Completed</button>
 </div>
+</ul>
+</div>
+<div id="notes-screen"  class="hidden">
+    <button id="add-note-btn"><i class="fa-solid fa-plus"></i></button>
+        <div id="notes-container">
+    
+    </div>
+</div>
+
+<div id="note-editor" class="hidden">
+
+    <div class="toolbar">
+        <button id="bold-btn">
+            <i class="fa-solid fa-bold"></i>
+        </button>
+        <button id="italic-btn">
+            <i class="fa-solid fa-italic"></i>
+        </button>
+        <button id="underline-btn">
+            <i class="fa-solid fa-underline"></i>
+        </button>
+        <input type="color" id="color-input">
+            
+
+    </div>
+
+    <div
+        id="editor"
+        contenteditable="true"
+        spellcheck="true">
+    </div>
+
+    <button id="save-btn">
+        <i class="fa-solid fa-check"></i>
+    </button>
+
+</div>
+
+    <header>
+        <nav class="nav-links-container">
+            <button id="list-btn"  class="links"><i class="fa-solid fa-list"></i> To Do List</button>
+            <button id="notes-btn" class="links"><i class="fa-solid fa-pencil"></i> My Notes</button>
+        </nav>
+    </header>
 <script src="script.js"></script>
 </body>
 </html>

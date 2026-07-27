@@ -20,6 +20,35 @@ const completeBtn = document.getElementById("Completed");
 
 const themeBtn = document.getElementById("theme-btn");
 
+const listBtn = document.getElementById("list-btn");
+
+const notesBtn = document.getElementById("notes-btn");
+
+const para = document.querySelector(".subtitle");
+
+const title = document.querySelector(".title")
+
+const toDoList = document.querySelector(".to-do-list");
+
+const notesScreen = document.getElementById("notes-screen");
+
+const noteEdit = document.getElementById("note-editor");
+
+const addNoteBtn = document.getElementById("add-note-btn");
+
+const saveBtn = document.getElementById("save-btn");
+
+const editor = document.getElementById("editor");
+
+const notesContainer = document.getElementById("notes-container");
+
+const boldBtn = document.getElementById("bold-btn");
+
+const italicBtn = document.getElementById("italic-btn");
+
+const underlineBtn = document.getElementById("underline-btn");
+
+const colorChange = document.getElementById("color-input");
 
 // Add Tasks And Styles 
 
@@ -240,3 +269,174 @@ themeBtn.addEventListener("click", () => {
     }
 
 });
+
+//Notes Section
+
+let currentNoteId = null;
+
+// show note screen and edit notes and remove notes
+function activeButton (navigate){
+    const navLinks = document.querySelectorAll(".links");
+    for(const link of navLinks){
+        link.classList.remove("links-active");
+    }
+    navigate.classList.add("links-active");
+}
+
+
+notesBtn.addEventListener("click" , () => {
+   para.classList.add("hidden");
+   title.textContent = "Notes";
+   toDoList.classList.add("hidden");
+   notesScreen.classList.remove("hidden");
+   activeButton(notesBtn);
+})
+
+function showScreen(screen) {
+
+    toDoList.classList.add("hidden");
+    notesScreen.classList.add("hidden");
+    noteEdit.classList.add("hidden");
+
+    screen.classList.remove("hidden");
+}
+
+function renderNotes() {
+
+    notesContainer.innerHTML = "";
+
+    for (const note of notes) {
+
+        const noteCard = document.createElement("div");
+
+        noteCard.classList.add("note-card");
+
+        noteCard.innerHTML = note.content;
+
+        notesContainer.append(noteCard);
+
+    const deleteNote = document.createElement("button");
+    deleteNote.classList.add("delete-button");
+    const i = document.createElement("i");
+    deleteNote.append(i);
+    i.classList.add("fa-solid", "fa-trash")
+    noteCard.append(deleteNote);
+
+    deleteNote.addEventListener("click" , (e) => {
+         e.stopPropagation();
+      notes = notes.filter(currentNote => {
+
+        return currentNote.id !== note.id;
+
+    });
+    localStorage.setItem("notes", JSON.stringify(notes));
+    renderNotes();
+    })
+
+    noteCard.addEventListener("click" , () => {
+        currentNoteId = note.id;
+         editor.innerHTML = note.content;
+          showScreen(noteEdit);
+    })
+    }
+}
+
+// navigate from to do list to notes
+
+listBtn.addEventListener("click", () => {
+    title.textContent = "TO DO LIST";
+    para.classList.remove("hidden");
+
+    showScreen(toDoList);
+    activeButton(listBtn);
+});
+
+
+// add note
+addNoteBtn.addEventListener("click", () => {
+
+    currentNoteId = null;
+
+    editor.innerHTML = "";
+
+    showScreen(noteEdit);
+
+    editor.focus();
+
+
+});
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+renderNotes();
+
+
+// save note
+saveBtn.addEventListener("click", () => {
+
+    if (editor.innerHTML.trim() === "") {
+    return;
+}else if (currentNoteId === null) {
+
+        const note = {
+            id: Date.now(),
+            content: editor.innerHTML,
+            createdAt: new Date().toLocaleDateString()
+        };
+
+        notes.push(note);
+
+    } else {
+
+        const note = notes.find(note => note.id === currentNoteId);
+
+        note.content = editor.innerHTML;
+
+    }
+
+    localStorage.setItem("notes", JSON.stringify(notes));
+
+    renderNotes();
+
+    showScreen(notesScreen);
+
+    editor.innerHTML = "";
+
+    currentNoteId = null;
+
+});
+
+
+// TOOL BAR
+
+
+boldBtn.addEventListener("click", () => {
+
+    editor.focus();
+
+    document.execCommand("bold");
+
+});
+
+
+italicBtn.addEventListener("click", () => {
+    editor.focus();
+    document.execCommand("italic");
+});
+
+
+underlineBtn.addEventListener("click", () => {
+
+    editor.focus();
+
+    document.execCommand("underline");
+});
+
+
+colorChange.addEventListener("input", () => {
+
+    editor.focus();
+
+    document.execCommand("foreColor", false, colorChange.value);
+});
+
+
